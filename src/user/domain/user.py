@@ -1,5 +1,9 @@
+from src.user.domain.user_id import UserID
+
+
 class User:
     def __init__(self, name: str, email: str):
+        self._id = UserID()
         self._name = name
         self._email = email
         self._workout_sessions = []

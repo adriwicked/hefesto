@@ -2,6 +2,7 @@ from datetime import date
 import unittest
 
 from src.user.domain.user import User
+from src.user.domain.user_id import UserID
 
 
 class TestUser(unittest.TestCase):
@@ -9,6 +10,7 @@ class TestUser(unittest.TestCase):
         self.user = User(name='Adrián', email='adrian@example.com')
 
     def test_init(self):
+        self.assertIsInstance(self.user._id, UserID)
         self.assertEqual(self.user._name, 'Adrián')
         self.assertEqual(self.user._email, 'adrian@example.com')
 
