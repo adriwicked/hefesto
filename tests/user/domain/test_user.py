@@ -33,14 +33,7 @@ class TestUser(unittest.TestCase):
     def test_get_id(self):
         self.assertIsNotNone(self.user.get_id())
 
-    def test_add_workout_session(self):
-        workout_session = date.today()
-        self.user.add_workout_session(workout_session)
-        workout_sessions = self.user.get_workout_sessions()
-        self.assertEqual(len(workout_sessions), 1)
-        self.assertEqual(workout_sessions[0], workout_session)
-
-    def test_get_workout_sessions(self):
+    def test_add_and_get_workout_session(self):
         self.user.add_workout_session(date.today())
         workout_sessions = self.user.get_workout_sessions()
         self.assertEqual(len(workout_sessions), 1)
