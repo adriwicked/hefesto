@@ -5,7 +5,7 @@ from src.user.domain.user_id import UserID
 
 
 class User:
-    def __init__(self, name: str, email: str, id: UserID=None):
+    def __init__(self, name: str, email: str, id: UserID = None):
         self._id = id if id != None else UserID()
         self._name = name
         self._email = email
@@ -24,7 +24,6 @@ class User:
         return self._workout_sessions
 
     def add_workout_session(self, workout_session: date):
-        if workout_session in self._workout_sessions:
-            raise ValueError('The workout session already exists')
+        assert workout_session not in self._workout_sessions
 
         self._workout_sessions.append(workout_session)

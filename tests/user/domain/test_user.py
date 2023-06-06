@@ -43,5 +43,5 @@ class TestUser(unittest.TestCase):
         workout_session = date.today()
         self.user.add_workout_session(workout_session)
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(AssertionError):
             self.user.add_workout_session(workout_session)
