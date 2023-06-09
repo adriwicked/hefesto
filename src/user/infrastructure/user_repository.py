@@ -8,7 +8,7 @@ class UserRepository:
 
     def save(self, user: User) -> User:
         self.users.append(user)
-        return user
+        return self.find(id=user.get_id())
 
     def find(self, id: UserID) -> User:
         for user in self.users:
