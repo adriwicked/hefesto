@@ -22,3 +22,12 @@ class TestCreateUser(unittest.TestCase):
 
         with self.assertRaises(AssertionError):
             create_user(name='', email='')
+
+    def test_create_user_providing_id(self):
+        google_uid = "Qo5mSFM3ezWJmieFglaB56i4Btx2"
+        name = 'adrian'
+        email = 'adrian@email.com'
+        create_user = get_create_user(self.repo)
+        created_user = create_user(name, email, google_uid)
+
+        self.assertEqual(created_user.get_id().value, google_uid)
