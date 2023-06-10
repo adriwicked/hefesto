@@ -8,6 +8,7 @@ from src.user.domain.user_id import UserID
 class TestUser(unittest.TestCase):
     def setUp(self):
         self.user = User(name='Adrián', email='adrian@example.com')
+        self.google_id = "Qo5mSFM3ezWJmieFglaB56i4Btx2"
 
     def test_init(self):
         self.assertIsInstance(self.user._id, UserID)
@@ -15,14 +16,12 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.user._email, 'adrian@example.com')
 
     def test_init_user_providing_id(self):
-        user_id = UserID()
-        user = User(id=user_id, name='Adrián', email='adrian@example.com')
-        self.assertEqual(user.get_id(), user_id)
+        user = User(id=self.google_id, name='Adrián', email='adrian@example.com')
+        self.assertEqual(user.get_id().value, self.google_id)
 
     def test_compare_same_users(self):
-        user_id = UserID()
-        user1 = User(id=user_id, name='Adrián', email='adrian@example.com')
-        user2 = User(id=user_id, name='Cristian', email='cristian@example.com')
+        user1 = User(id=self.google_id, name='Adrián', email='adrian@example.com')
+        user2 = User(id=self.google_id, name='Cristian', email='cristian@example.com')
         self.assertEqual(user1, user2)
 
     def test_compare_different_users(self):

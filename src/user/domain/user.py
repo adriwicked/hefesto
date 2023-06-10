@@ -5,8 +5,8 @@ from src.user.domain.user_id import UserID
 
 
 class User:
-    def __init__(self, name: str, email: str, id: UserID = None):
-        self._id = id if id != None else UserID()
+    def __init__(self, name: str, email: str, id: str = None):
+        self._id = UserID(id) if id != None else UserID()
         self._name = name
         self._email = email
         self._workout_sessions = []
