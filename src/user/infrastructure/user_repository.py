@@ -7,8 +7,12 @@ class UserRepository:
         self.users = []
 
     def save(self, user: User) -> User:
-        self.users.append(user)
-        return self.find(id=user.get_id())
+        found_user = self.find(id=user.get_id())
+
+        if not found_user:
+            self.users.append(user)
+
+        return user
 
     def find(self, id: UserID) -> User:
         assert id
@@ -17,3 +21,6 @@ class UserRepository:
             if user.get_id() == id:
                 return user
         return None
+
+    def findAll(self):
+        return self.users
