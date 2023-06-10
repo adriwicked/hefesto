@@ -17,3 +17,7 @@ class TestUserRepository(unittest.TestCase):
         self.repo.save(user)
         obtained_user = self.repo.find(user.get_id())
         self.assertEqual(user, obtained_user)
+
+    def test_get_user_by_id_raise_error_if_id_not_provided(self):
+        with self.assertRaises(AssertionError):
+            self.repo.find(None)

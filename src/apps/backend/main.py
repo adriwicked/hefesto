@@ -8,10 +8,6 @@ CORS(app)
 
 firebase_request = requests.Request()
 
-@app.route('/')
-def root():
-    return {'list': [1, 2, 3]}
-
 @app.route('/login', methods=['POST'])
 def login():
     token = request.headers.get('Authentication').replace('Bearer ', '')

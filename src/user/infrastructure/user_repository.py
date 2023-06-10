@@ -11,6 +11,8 @@ class UserRepository:
         return self.find(id=user.get_id())
 
     def find(self, id: UserID) -> User:
+        assert id
+
         for user in self.users:
             if user.get_id() == id:
                 return user
